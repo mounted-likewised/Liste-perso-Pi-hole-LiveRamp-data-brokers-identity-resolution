@@ -1,0 +1,45 @@
+# ============================================================
+# Liste perso Pi-hole — LiveRamp & data brokers / identity resolution
+# manquants dans : hagezi/pro, CorleoneSalute/DMP-Data-Broker,
+# EasyPrivacy, EasyList, Admiral, Prigent-Ads/Malware, Frogeye,
+# phishing.army, WindowsSpyBlocker, Spam404
+#
+# Format : hosts (compatible adlist Pi-hole)
+# Généré : 2026-08-31
+#
+# Utilisation :
+#   1. Héberger ce fichier sur GitHub (raw.githubusercontent.com/...)
+#   2. Pi-hole > Group Management > Adlists > ajouter l'URL raw
+#   3. Tools > Update Gravity (ou "pihole -g")
+# ============================================================
+
+# --- LiveRamp / RampID (résolution d'identité, ciblage publicitaire) ---
+0.0.0.0 liveramp.com
+0.0.0.0 www.liveramp.com
+0.0.0.0 pixel.liveramp.com
+0.0.0.0 atsod.launch.liveramp.com
+0.0.0.0 rlcdn.com
+0.0.0.0 rlcdn.net
+0.0.0.0 idsync.rlcdn.com
+0.0.0.0 api.rlcdn.com
+
+# --- Résolution d'identité / DMP / courtiers de données (pairs de LiveRamp) ---
+0.0.0.0 neustar.biz
+0.0.0.0 conversantmedia.com
+0.0.0.0 audigent.com
+0.0.0.0 id5.io
+0.0.0.0 veraset.com
+0.0.0.0 adform.com
+
+# --- Acteurs adtech plus petits / niches ---
+0.0.0.0 kubient.com
+0.0.0.0 albert.io
+
+# --- Legacy / priorité faible (marque quasi abandonnée, gardé pour complétude) ---
+0.0.0.0 oath.com
+
+# --- Volontairement exclu ---
+# foursquare.com : bloque aussi l'app grand public Foursquare/Swarm.
+# Si tu veux couper leur volet data-broker sans toucher l'app,
+# identifie d'abord leurs sous-domaines de tracking spécifiques
+# avant de bloquer le domaine racine.
