@@ -1,11 +1,11 @@
 # ============================================================
-# Liste perso Pi-hole — LiveRamp & data brokers / identity resolution
+# Liste perso Pi-hole — data brokers / identity resolution / ad-tech
 # manquants dans : hagezi/pro, CorleoneSalute/DMP-Data-Broker,
 # EasyPrivacy, EasyList, Admiral, Prigent-Ads/Malware, Frogeye,
 # phishing.army, WindowsSpyBlocker, Spam404
 #
 # Format : hosts (compatible adlist Pi-hole)
-# Généré : 2026-08-31
+# Généré : 2026-08-31 · Mis à jour : 2026-09-01 (ajout section Alphabet/Google)
 #
 # Utilisation :
 #   1. Héberger ce fichier sur GitHub (raw.githubusercontent.com/...)
@@ -38,8 +38,29 @@
 # --- Legacy / priorité faible (marque quasi abandonnée, gardé pour complétude) ---
 0.0.0.0 oath.com
 
+# --- Alphabet/Google — ad-tech confirmé absent de hagezi/pro + DMP-Data-Broker ---
+# Vérifié le 2026-09-01. Domaines ciblés uniquement (pub/analytics), aucun ne
+# sert de contenu ou de fonction essentielle — sans risque de casser une app.
+0.0.0.0 adservice.google.com
+0.0.0.0 admanager.google.com
+0.0.0.0 feedburner.com
+0.0.0.0 doubleclickusercontent.com
+0.0.0.0 firebase.com
+
 # --- Volontairement exclu ---
 # foursquare.com : bloque aussi l'app grand public Foursquare/Swarm.
 # Si tu veux couper leur volet data-broker sans toucher l'app,
 # identifie d'abord leurs sous-domaines de tracking spécifiques
 # avant de bloquer le domaine racine.
+#
+# googlevideo.com, ytimg.com : CDN qui mélangent contenu ET pub YouTube —
+# les bloquer casserait la lecture de toutes les vidéos, pas juste les pubs.
+#
+# android-safetynet.google.com : API d'attestation de sécurité Android —
+# À NE JAMAIS BLOQUER, casse des apps bancaires et autres qui vérifient
+# l'intégrité du téléphone.
+#
+# nest.com, api.fitbit.com, home.nest.com : pas de sous-domaine de tracking
+# spécifique identifié à cibler — bloquer le domaine racine casserait l'app
+# plutôt que de couper du tracking. web-metrics.fitbit.com (sous-domaine
+# télémétrie Fitbit) est déjà couvert par hagezi/pro, pas besoin ici.
